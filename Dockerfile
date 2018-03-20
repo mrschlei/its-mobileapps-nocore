@@ -1,4 +1,4 @@
-FROM drupal:latest
+FROM drupal:7
 
 #MAINTAINER: Ben Fairfield - benfa
 
