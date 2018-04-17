@@ -40,7 +40,7 @@ EXPOSE 8080
 EXPOSE 8443
 
 # nothing here for the time being.
-COPY . /var/www/html/
+#COPY . /var/www/html/
 
 ### There may be an easier way to do all of this by setting APACHE_RUN_USER
 ### and APACHE_RUN_GROUP in env vars or /etc/apache2/envvars
@@ -63,6 +63,6 @@ RUN mkdir -p /usr/local/etc/php/conf.d /usr/lib/oracle /etc/oracle /opt/oracle
 RUN chmod g+rw /usr/local/etc/php/conf.d /usr/lib/oracle /etc/oracle /opt/oracle
 
 ### Start script incorporates config files and sends logs to stdout ###
-COPY start.sh /usr/local/bin
-RUN chmod 755 /usr/local/bin/start.sh
-CMD /usr/local/bin/start.sh
+#COPY start.sh /usr/local/bin
+#RUN chmod 755 /usr/local/bin/start.sh
+#CMD /usr/local/bin/start.sh
