@@ -59,8 +59,8 @@ RUN chmod -R g+rw /var/log/apache2 /var/www/html/sites/default /etc/apache2 \
 RUN chmod g+x /etc/ssl/private
 
 # Oracle subdirectories
-RUN mkdir -p /usr/local/etc/php/conf.d /usr/lib/oracle /etc/oracle /opt/oracle
-RUN chmod g+rw /usr/local/etc/php/conf.d /usr/lib/oracle /etc/oracle /opt/oracle
+#RUN mkdir -p /usr/local/etc/php/conf.d /usr/lib/oracle /etc/oracle /opt/oracle
+#RUN chmod g+rw /usr/local/etc/php/conf.d /usr/lib/oracle /etc/oracle /opt/oracle
 
 ### Start script incorporates config files and sends logs to stdout ###
 COPY start.sh /usr/local/bin
