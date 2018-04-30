@@ -45,9 +45,12 @@ COPY . /var/www/html/
 ### There may be an easier way to do all of this by setting APACHE_RUN_USER
 ### and APACHE_RUN_GROUP in env vars or /etc/apache2/envvars
 
+RUN mkdir -p /usr/local/etc/php/conf.d /usr/lib/oracle /etc/oracle /opt/oracle
+
 ### change directory owner, as openshift user is in root group.
 RUN chown -R root:root /var/www/html /var/log/apache2 /var/lock/apache2 \
-	/var/run/apache2
+	/var/run/apache2 /usr/local/etc/php/conf.d /usr/lib/oracle \
+	/etc/oracle /opt/oracle
 
 ### Modify perms for the openshift user, who is not root, but part of root group.
 RUN chmod -R g+r /var/www/html /var/cosign 
@@ -55,7 +58,8 @@ RUN chmod -R g+rw /var/log/apache2 /var/www/html/ /etc/apache2 \
 	/etc/ssl/certs /etc/ssl/private /etc/apache2/mods-enabled /etc/apache2/sites-enabled \
 	/etc/apache2/sites-available /etc/apache2/mods-available \
 	/var/lib/apache2/module/enabled_by_admin /var/lib/apache2/site/enabled_by_admin \
-	/var/lock/apache2 /var/run/apache2 
+	/var/lock/apache2 /var/run/apache2 /usr/local/etc/php/conf.d /usr/lib/oracle \
+	/etc/oracle /opt/oracle
 RUN chmod g+x /etc/ssl/private
 
 # Oracle subdirectories
