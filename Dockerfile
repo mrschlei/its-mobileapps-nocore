@@ -12,7 +12,7 @@ ENV APACHE2=/usr/sbin/apache2
 
 # install PHP and Apache2 here
 RUN apt-get update \
-	&& apt-get install -y wget gcc make openssl \
+	&& apt-get install -y apt-utils wget gcc make openssl \
 		libssl-dev apache2-dev autoconf \
 		libaio1 libaio-dev gzip zip make
 
