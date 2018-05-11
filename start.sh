@@ -3,15 +3,14 @@
 # Redirect logs to stdout and stderr for docker reasons.
 # it seems both sylinks already exist. 
 # these commands create unnecessary duplicates
-#ln -sf /dev/stdout /var/log/apache2/access_log
-#ln -sf /dev/stderr /var/log/apache2/error_log
+ln -sf /dev/stdout /var/log/apache2/access_log
+ln -sf /dev/stderr /var/log/apache2/error_log
 
 # apache and virtual host secrets
 ln -sf /secrets/apache2/apache2.conf /etc/apache2/apache2.conf
-ln -sf /secrets/apache2/ports.conf /etc/apache2/ports.conf
 ln -sf /secrets/apache2/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 ln -sf /secrets/apache2/cosign.conf /etc/apache2/mods-available/cosign.conf
-
+ln -sf /secrets/apache2/ports.conf /etc/apache2/ports.conf
 # SSL secrets
 ln -sf /secrets/ssl/USERTrustRSACertificationAuthority.pem /etc/ssl/certs/USERTrustRSACertificationAuthority.pem
 ln -sf /secrets/ssl/AddTrustExternalCARoot.pem /etc/ssl/certs/AddTrustExternalCARoot.pem
@@ -34,4 +33,3 @@ a2ensite default-ssl
 #drush up --no-backup --yes
 
 /usr/local/bin/apache2-foreground
-
