@@ -1,0 +1,105 @@
+apiVersion: v1
+kind: Template
+metadata:
+  creationTimestamp: null
+  name: its-mobileapps-nocore
+objects:
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    generation: 1
+    labels:
+      app: its-mobileapps-nocore
+    name: its-mobileapps-nocore
+  spec:
+    replicas: 1
+    selector:
+      app: its-mobileapps-nocore
+      deploymentconfig: its-mobileapps-nocore
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: its-mobileapps-nocore
+          deploymentconfig: its-mobileapps-nocore
+      spec:
+        containers:
+        - image: docker-registry.default.svc:5000/its-mobileapps-nocore/its-mobileapps-nocore@sha256:3728ed0d66483fd4a8c360a2abf1fed88392b84ca11b3d9b9faf5b5239c49172
+          imagePullPolicy: Always
+          name: its-mobileapps-nocore
+          ports:
+          - containerPort: 8443
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          volumeMounts:
+          - mountPath: /secrets/apache2
+            name: volume-46b5r
+          - mountPath: /secrets/app
+            name: volume-pgg9v
+          - mountPath: /secrets/oracle
+            name: volume-cjnc7
+          - mountPath: /secrets/ssl
+            name: volume-2xj9m
+          - mountPath: /secrets/php
+            name: volume-wa8zj
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: volume-46b5r
+          secret:
+            defaultMode: 420
+            secretName: apache2
+        - name: volume-pgg9v
+          secret:
+            defaultMode: 420
+            secretName: app
+        - name: volume-cjnc7
+          secret:
+            defaultMode: 420
+            secretName: oracle
+        - name: volume-2xj9m
+          secret:
+            defaultMode: 420
+            secretName: ssl
+        - name: volume-wa8zj
+          secret:
+            defaultMode: 420
+            secretName: php
+    test: false
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - its-mobileapps-nocore
+        from:
+          kind: ImageStreamTag
+          name: its-mobileapps-nocore:latest
+          namespace: its-mobileapps-nocore
+      type: ImageChange
+  status:
+    availableReplicas: 0
+    latestVersion: 0
+    observedGeneration: 0
+    replicas: 0
+    unavailableReplicas: 0
+    updatedReplicas: 0

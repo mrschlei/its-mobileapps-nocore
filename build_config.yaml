@@ -1,0 +1,34 @@
+kind: "BuildConfig"
+apiVersion: "v1"
+metadata:
+   name: "its-mobileapps-nocore"
+spec:
+   runPolicy: "Serial"
+   triggers:
+   -
+#      type: "GitHub"
+#      github:
+#         secret: "<Secrete file name>"
+   - type: "Generic"
+#   generic:
+#      secret: "secret101"
+   -
+   type: "ImageChange"
+   source:
+      type: "<Source of code>"
+      git:
+   uri: "https://github.com/mrschlei/its-mobileapps-nocore.git"
+   dockerfile: "FROM drupal:7.58-apache"
+   strategy:
+      type: "Source"
+      
+sourceStrategy:
+   from:
+      kind: "ImageStreamTag"
+      name: "its-mobileapps-nocore:latest"
+   output:
+      to:
+         kind: "ImageStreamTag"
+         name: "its-mobileapps-nocore:latest"
+#   postCommit:
+#      script: "bundle exec rake test"
