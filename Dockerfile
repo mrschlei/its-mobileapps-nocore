@@ -19,7 +19,7 @@ RUN chmod -R g+r /var/www/html
 # 	/var/lib/apache2/module/enabled_by_admin /var/lib/apache2/site/enabled_by_admin \
 ## 	/var/lock/apache2 /var/run/apache2 /usr/local/etc/php \
 # 	 /usr/local/lib/php
-RUN chomod -R g+rw /etc/apache2 /etc/apache2/mods-available \
+RUN chmod -R g+rw /etc/apache2 /etc/apache2/mods-available \
 	/etc/apache2/mods-enabled /etc/apache2/sites-available\
 	/etc/apache2/sites-enabled /etc/ssl/certs /etc/ssl/private \
 	/usr/local/etc/php /usr/local/lib/php \
