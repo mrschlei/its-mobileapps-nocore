@@ -9,11 +9,13 @@ EXPOSE 8443
 #RUN chown -R root:root /var/www/html /var/log/apache2 /var/lock/apache2 \
 #	/var/run/apache2 /usr/local/etc/php /usr/local/lib/php
 
-RUN chown -R root:root /usr/local/etc/php /usr/local/lib/php \
-	/var/log/apache2 /var/lock/apache2 /var/run/apache2 \
-	/var/www/html
+#RUN chown -R root:root /usr/local/etc/php /usr/local/lib/php \
+#	/var/log/apache2 /var/lock/apache2 /var/run/apache2 \
+#	/var/www/html
 
 RUN mkdir -p /var/www/html/sites/default/ 
+RUN chown -R root:root /var/www/html/sites/default/
+RUN chmod g+rw /var/www/html/sites/default/
 	
 ### Modify perms for the openshift user, who is not root, but part of root group.
 RUN chmod -R g+r /var/www/html
@@ -23,6 +25,14 @@ RUN chmod -R g+r /var/www/html
 # 	/var/lib/apache2/module/enabled_by_admin /var/lib/apache2/site/enabled_by_admin \
 ## 	/var/lock/apache2 /var/run/apache2 /usr/local/etc/php \
 # 	 /usr/local/lib/php
+RUN chown -R root:root /etc/apache2 /etc/apache2/mods-available \
+	/etc/apache2/mods-enabled /etc/apache2/sites-available\
+	/etc/apache2/sites-enabled /etc/ssl/certs /etc/ssl/private \
+	/usr/local/etc/php /usr/local/etc/php/conf.d /usr/local/lib/php \
+	/var/lib/apache2/module/enabled_by_admin \ 
+	/var/lib/apache2/site/enabled_by_admin \
+	/var/lock/apache2 /var/log/apache2 /var/run/apache2\
+	/var/www/html
 RUN chmod -R g+rw /etc/apache2 /etc/apache2/mods-available \
 	/etc/apache2/mods-enabled /etc/apache2/sites-available\
 	/etc/apache2/sites-enabled /etc/ssl/certs /etc/ssl/private \
