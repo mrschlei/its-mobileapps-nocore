@@ -6,8 +6,12 @@ EXPOSE 8080
 EXPOSE 8443
 
 ### change directory owner, as openshift user is in root group.
-RUN chown -R root:root /var/www/html /var/log/apache2 /var/lock/apache2 \
-	/var/run/apache2 /usr/local/etc/php /usr/local/lib/php
+#RUN chown -R root:root /var/www/html /var/log/apache2 /var/lock/apache2 \
+#	/var/run/apache2 /usr/local/etc/php /usr/local/lib/php
+
+RUN chown -R root:root /usr/local/etc/php /usr/local/lib/php \
+	/var/log/apache2 /var/lock/apache2 /var/run/apache2 \
+	/var/www/html
 
 RUN mkdir -p /var/www/html/sites/default/ 
 	
@@ -30,7 +34,8 @@ RUN chmod -R g+rw /etc/apache2 /etc/apache2/mods-available \
 
 RUN chmod g+x /etc/ssl/private
 
-## Oracle directories
+## Oracle packages and directories
+RUN apt-get install libaio1 libaio-dev gzip zip make
 RUN mkdir /etc/oracle /opt/oracle /usr/lib/oracle
 RUN chmod -R g+w /etc/oracle /opt/oracle /usr/lib/oracle
 
