@@ -46,10 +46,11 @@ RUN chmod g+x /etc/ssl/private
 
 ## Oracle packages and directories
 RUN apt-get install -y apt-utils autoconf gzip libaio1 libaio-dev make zip 
-RUN mkdir /etc/oracle /opt/oracle /usr/lib/oracle
+#mkdir: cannot create directory '/etc/oracle': File exists
+#RUN mkdir /etc/oracle /opt/oracle /usr/lib/oracle
 RUN chmod -R g+w /etc/oracle /opt/oracle /usr/lib/oracle
 COPY instantclient-basic-linux.x64-12.2.0.1.0.zip /opt/oracle
-#RUN cd /secrets/php
+#ln: failed to create symbolic link '/etc/php.ini': Permission denied
 #COPY php.ini /etc/php.ini
 COPY php.ini /usr/local/etc/php/php.ini
 COPY php.ini /usr/local/etc/php/conf.d/php.ini
