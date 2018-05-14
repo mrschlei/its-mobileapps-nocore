@@ -50,7 +50,7 @@ RUN mkdir /etc/oracle /opt/oracle /usr/lib/oracle
 RUN chmod -R g+w /etc/oracle /opt/oracle /usr/lib/oracle
 COPY instantclient-basic-linux.x64-12.2.0.1.0.zip /opt/oracle
 #RUN cd /secrets/php
-COPY php.ini /etc/php.ini
+#COPY php.ini /etc/php.ini
 COPY php.ini /usr/local/etc/php/php.ini
 COPY php.ini /usr/local/etc/php/conf.d/php.ini
 COPY php.ini /usr/local/etc/php/conf.d/docker-php-ext-php.ini
