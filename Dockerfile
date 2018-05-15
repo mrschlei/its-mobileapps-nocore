@@ -39,5 +39,5 @@ COPY start.sh /usr/local/bin
 RUN chmod 755 /usr/local/bin/start.sh
 CMD /usr/local/bin/start.sh
 
-pecl channel-update pecl.php.net
-pecl config-set php_ini /usr/local/etc/php/php.ini
+RUN pecl channel-update pecl.php.net
+RUN pecl config-set php_ini /usr/local/etc/php/php.ini
