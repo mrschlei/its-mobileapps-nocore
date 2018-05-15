@@ -24,6 +24,9 @@ fi
 ## Rehash command needs to be run before starting apache.
 c_rehash /etc/ssl/certs >/dev/null
 
+#????
+a2enmod cosign
+#end ?????
 a2enmod ssl
 a2enmod include
 a2ensite default-ssl 
