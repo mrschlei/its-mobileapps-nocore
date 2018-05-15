@@ -35,9 +35,6 @@ RUN chmod -R g+w /etc/oracle /opt/oracle /usr/lib/oracle
 COPY instantclient-basic-linux.x64-12.2.0.1.0.zip /opt/oracle
 ## 
 
-# this is Mike's idea
-pecl config-set php_ini /usr/local/etc/php/php.ini
-
 COPY start.sh /usr/local/bin
 RUN chmod 755 /usr/local/bin/start.sh
 CMD /usr/local/bin/start.sh
