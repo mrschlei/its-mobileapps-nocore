@@ -55,6 +55,7 @@ COPY instantclient-basic-linux.x64-12.2.0.1.0.zip /opt/oracle
 #COPY php.ini /usr/local/etc/php/php.ini
 #COPY php.ini /usr/local/etc/php/conf.d/php.ini
 #COPY php.ini /usr/local/etc/php/conf.d/docker-php-ext-php.ini
+COPY php.ini /usr/local/lib/php/php.ini
 
 COPY start.sh /usr/local/bin
 RUN chmod 755 /usr/local/bin/start.sh
