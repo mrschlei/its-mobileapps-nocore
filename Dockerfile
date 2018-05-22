@@ -16,7 +16,7 @@ RUN chown -R root:root /etc/apache2 \
 	/var/www/html
 
 ### Modify perms for the openshift user, who is not root, but part of root group.
-RUN chmod -R root:root /etc/apache2 \
+RUN chmod -R g+rw /etc/apache2 \
 	/etc/ssl/certs /etc/ssl/private \
 	/usr/local/etc/php /usr/local/lib/php \
 	/var/lib/apache2/module/enabled_by_admin \ 
