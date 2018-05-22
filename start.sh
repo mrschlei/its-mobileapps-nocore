@@ -16,17 +16,17 @@ ln -sf /secrets/ssl/USERTrustRSACertificationAuthority.pem /etc/ssl/certs/USERTr
 ln -sf /secrets/ssl/AddTrustExternalCARoot.pem /etc/ssl/certs/AddTrustExternalCARoot.pem
 ln -sf /secrets/ssl/sha384-Intermediate-cert.pem /etc/ssl/certs/sha384-Intermediate-cert.pem
 
+a2enmod ssl
+a2enmod include
+a2ensite default-ssl 
+
 if [ -f /secrets/app/local.start.sh ]
 then
-  /bin/sh /secrets/app/local.start.sh
+  /bin/bash /secrets/app/local.start.sh
 fi
 
 ## Rehash command needs to be run before starting apache.
 c_rehash /etc/ssl/certs >/dev/null
-
-a2enmod ssl
-a2enmod include
-a2ensite default-ssl 
 
 #cd /var/www/html
 #drush @sites cc all --yes
