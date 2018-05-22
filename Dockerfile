@@ -29,15 +29,15 @@ RUN chmod -R g+rw /etc/apache2 /etc/apache2/mods-available \
 RUN chmod g+x /etc/ssl/private
 
 ## Oracle packages and directories
-RUN apt-get install -y apt-utils autoconf gzip libaio1 libaio-dev make zip 
-RUN mkdir /etc/oracle /opt/oracle /usr/lib/oracle 
-RUN chmod -R g+w /etc/oracle /opt/oracle /usr/lib/oracle
-COPY instantclient-basic-linux.x64-12.2.0.1.0.zip /opt/oracle
+#RUN apt-get install -y apt-utils autoconf gzip libaio1 libaio-dev make zip 
+#RUN mkdir /etc/oracle /opt/oracle /usr/lib/oracle 
+#RUN chmod -R g+w /etc/oracle /opt/oracle /usr/lib/oracle
+#COPY instantclient-basic-linux.x64-12.2.0.1.0.zip /opt/oracle
 ## 
 
 COPY start.sh /usr/local/bin
 RUN chmod 755 /usr/local/bin/start.sh
 CMD /usr/local/bin/start.sh
 
-RUN pecl channel-update pecl.php.net
-RUN pecl config-set php_ini /usr/local/etc/php/php.ini
+#RUN pecl channel-update pecl.php.net
+#RUN pecl config-set php_ini /usr/local/etc/php/php.ini
