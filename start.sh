@@ -20,13 +20,13 @@ a2enmod ssl
 a2enmod include
 a2ensite default-ssl 
 
+## Rehash command needs to be run before starting apache.
+c_rehash /etc/ssl/certs >/dev/null
+
 if [ -f /secrets/app/local.start.sh ]
 then
   /bin/bash /secrets/app/local.start.sh
 fi
-
-## Rehash command needs to be run before starting apache.
-c_rehash /etc/ssl/certs >/dev/null
 
 #cd /var/www/html
 #drush @sites cc all --yes
