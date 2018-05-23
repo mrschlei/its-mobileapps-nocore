@@ -28,8 +28,8 @@ then
   /bin/bash /secrets/app/local.start.sh
 fi
 
-#cd /var/www/html
-#drush @sites cc all --yes
-#drush up --no-backup --yes
+cd /var/www/html
+drush @sites cc all --yes
+drush up --no-backup --yes
 
 /usr/local/bin/apache2-foreground
